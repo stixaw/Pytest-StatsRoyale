@@ -15,7 +15,14 @@ def get_all_cards() -> List[Card]:
         raise Exception('Response was not ok. Status Code: ' + response.status_code)
 
 
-def get_a_card(card_name: str) -> Card:
+def get_a_card_by_name(card_name: str) -> Card:
     cards = get_all_cards()
     card = next(card for card in cards if card.name == card_name)
+    return card
+
+
+# this would be used if we only had a list of ids to do our search, would work the same as get card by name function
+def get_a_card_by_id(card_id: int) -> Card:
+    cards = get_all_cards()
+    card = next(card for card in cards if card.id == card_id)
     return card
