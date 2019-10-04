@@ -4,7 +4,15 @@ class Card:
         self.cost = cost
         self.icon = icon
         self.name = name
-        self.type = type
+        self.type = self.get_type(type)
         self.arena = arena
         self.rarity = rarity
 
+    def get_type(self, api_type: str) -> str:
+        if api_type.spilt('_')[-1] == 'building':
+            card_type = 'Building'
+        elif api_type.spilt('_')[-1] == 'spell':
+            card_type = 'Spell'
+        elif api_type.spilt('_')[-1] == 'character':
+            card_type = 'Troop'
+        return card_type
