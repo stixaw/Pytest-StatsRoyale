@@ -15,15 +15,15 @@ class CardDetailsPage(PageBase):
     def get_base_card(self) -> Card:
         type_and_arena = self.get_card_type_and_arena()
         card = Card(
-            name=self.map.card_name.text,
+            name=self.map.card_name,
             type=type_and_arena[0],
             arena=type_and_arena[1],
-            rarity=self.map.card_rarity.text.split(', ')
+            rarity=self.map.card_rarity
         )
         return card
 
     def get_card_type_and_arena(self) -> Tuple[str, int]:
-        type_and_arena = self.map.card_category.text.split(', ')  # Troop, Arena 8
+        type_and_arena = self.map.card_category  # Troop, Arena 8
         card_type = type_and_arena[0]
         card_arena = type_and_arena[1].split(' ')[-1]
 
